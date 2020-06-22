@@ -6,7 +6,7 @@ import {OBJLoader} from 'three/examples/jsm/loaders/OBJLoader'
 import { render } from '@testing-library/react';
 var scene = new THREE.Scene();
 
-var light = new THREE.PointLight(0xfffcf5,1,100,0);
+var light = new THREE.PointLight(0x131c25,1,10,0);
 
 scene.add(light)
 var camera = new THREE.PerspectiveCamera(
@@ -20,7 +20,7 @@ camera.position.y = 0.6;
 camera.position.z = 2;
 scene.add(camera);
 var renderer = new THREE.WebGLRenderer();
-var ambientLight = new THREE.AmbientLight();
+var ambientLight = new THREE.AmbientLight(0xb3c1ff,0.5);
 scene.add(ambientLight);
 renderer.setClearColor('rgb(19,28,36)');
 
@@ -29,7 +29,7 @@ renderer.setClearColor('rgb(19,28,36)');
 var loader = new OBJLoader();
 
 var headMaterial = new THREE.MeshPhongMaterial({
-    color: 0x1a588d,
+    color: 0x2a3c4f,
     wireframe: true
 });
 
@@ -64,12 +64,14 @@ var folder = datGui.addFolder(`Cube`);
 folder.add(light.position,'x',-5,5);
 folder.add(light.position,'y',-10,10);
 folder.add(light.position,'z',-10,10);
+folder.add(light,'intensity',0.1,10);
 
 function update(){
     //controls.update();
 
     if (!(scene.getObjectByName('head') == undefined)){
         var head = scene.getObjectByName('head');
+        head.rotation.y = head.rotation.y + 0.001;
     }
 
     camera.aspect = window.innerWidth / window.innerHeight;
