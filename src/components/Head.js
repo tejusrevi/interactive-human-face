@@ -2,10 +2,13 @@ import * as THREE from 'three';
 import React from 'react';
 import * as dat from 'dat.gui';
 //import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import {OBJLoader2} from 'three/examples/jsm/loaders/OBJLoader2'
+import {OBJLoader} from 'three/examples/jsm/loaders/OBJLoader'
+import { render } from '@testing-library/react';
 var scene = new THREE.Scene();
-var head;
 
+var light = new THREE.PointLight(0xfffcf5,1,100,0);
+
+scene.add(light)
 var camera = new THREE.PerspectiveCamera(
     45, // field of view
     window.innerWidth / window.innerHeight, // aspect ratio
@@ -20,13 +23,12 @@ var renderer = new THREE.WebGLRenderer();
 var ambientLight = new THREE.AmbientLight();
 scene.add(ambientLight);
 renderer.setClearColor('rgb(19,28,36)');
-renderer.setSize(window.innerWidth, window.innerHeight);
 
 //var controls = new OrbitControls( camera, renderer.domElement );
 
-var loader = new OBJLoader2();
+var loader = new OBJLoader();
 
-var headMaterial = new THREE.MeshBasicMaterial({
+var headMaterial = new THREE.MeshPhongMaterial({
     color: 0x1a588d,
     wireframe: true
 });
@@ -39,14 +41,12 @@ loader.load(
 	function ( object ) {
         object.traverse( function ( child ) {
             if ( child.isMesh ) {
-                num ++;
-                if(num%2 == 0) child.material = headMaterial;  
+                child.material = headMaterial;
             }   
         } );
         //var material = new THREE.MeshBasicMaterial();
         //var mesh = new THREE.Mesh( object, material );
         object.name = 'head';
-        head = object;
 		scene.add(object)
 	},
 	// called when loading is in progresses
@@ -61,17 +61,22 @@ loader.load(
 
 const datGui  = new dat.GUI({ autoPlace: true });
 var folder = datGui.addFolder(`Cube`);
-folder.add(camera.position,'x',0,2);
-folder.add(camera.position,'y',0,2);
-folder.add(camera.position,'z',0,4);
+folder.add(light.position,'x',-5,5);
+folder.add(light.position,'y',-10,10);
+folder.add(light.position,'z',-10,10);
 
 function update(){
     //controls.update();
 
-    if (!(head == undefined)){
-        head.rotation.y = head.rotation.y + 0.01;
-        console.log(head.rotation.y)
+    if (!(scene.getObjectByName('head') == undefined)){
+        var head = scene.getObjectByName('head');
     }
+
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setPixelRatio( window.devicePixelRatio + 0.5 );
+    renderer.setSize(window.innerWidth, window.innerHeight)
     renderer.render(scene, camera);
     requestAnimationFrame(update);
 }
@@ -80,7 +85,6 @@ const Head = (props) => {
     return(
         <div>
             {update()}
-            Hi
         </div>
     )
 }
