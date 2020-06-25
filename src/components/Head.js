@@ -15,7 +15,8 @@ var loader;
 
 function getLights(){
     light = new THREE.PointLight(0x131c25,5,10,0);
-    light.position.z = 4
+    light.position.z = 4;
+    light.name = 'pointLight';
     scene.add(light)
     ambientLight = new THREE.AmbientLight(0xb3c1ff,1);
     scene.add(ambientLight);

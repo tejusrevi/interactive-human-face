@@ -31,17 +31,22 @@ function findScreenCoords(mouseEvent){
 
 function moveHead(){
     if(scene.getObjectByName('Sam') != undefined){
+        //Model motion
         var jaw = scene.getObjectByName('jaw');
         var head = scene.getObjectByName('head');
         //vertical
         jaw.rotation.y = (limits_rotation.jaw[1].horizontal[1]*screenX);
         head.rotation.y = (limits_rotation.head[1].horizontal[1]*screenX);
 
-        //horizontal
+        //horizontalscene.getObjectByName('jaw');
 
         jaw.rotation.z = 1.5983987668302173 - (limits_rotation.jaw[0].vertical[1]-limits_rotation.jaw[0].vertical[0])*screenY;
         head.rotation.z = 0.12424596820316035 + (limits_rotation.head[0].vertical[1]-limits_rotation.head[0].vertical[0])*screenY;
 
+        //Light Motion
+        var light = scene.getObjectByName('pointLight');
+        light.position.y = 10*screenX;
+        light.position.x = 10*screenY;
     }
 }
 function lookAt(scn){
