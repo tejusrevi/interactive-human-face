@@ -1,3 +1,39 @@
+#screenCoords{
+  position: fixed;
+  color: #61dafb;
+}
+#screenPercent{
+  position: fixed;
+  padding: 20px;
+  color: #61dafb;
+}
+
+#webgl{
+  overflow: hidden;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 1px #131c25; 
+  background-color: #131c25;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2a3c4f; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #405b78; 
+}
 .App {
   text-align: center;
 }
