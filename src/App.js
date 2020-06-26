@@ -8,11 +8,13 @@ function App() {
   
   return (
     <div className="App">
+      <div id="alpha"/>
       <code id="screenCoords">
       </code>
       <code id="screenPercent">
       </code>
           <Head id={1}/>
+          
     </div>
   );
 }

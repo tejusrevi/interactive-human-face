@@ -11,6 +11,11 @@
 #webgl{
   overflow: hidden;
 }
+#alpha{
+  position: fixed;
+  color: red;
+  bottom: 0px;
+}
 
 
 /* width */

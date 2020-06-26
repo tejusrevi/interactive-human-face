@@ -38,7 +38,7 @@ function getCamera(){
 function getRenderer(){
     renderer = new THREE.WebGLRenderer();
     renderer.setClearColor('rgb(19,28,36)');
-    controls = new OrbitControls( camera, renderer.domElement );
+    //controls = new OrbitControls( camera, renderer.domElement );
 }
 
 function loadModel(){
@@ -73,7 +73,7 @@ function loadModel(){
 var trueonce = true;
 
 function update(){
-    controls.update();
+    //controls.update();
     if (!(scene.getObjectByName('jaw') == undefined)){
         console.log(scene.getObjectByName('jaw').rotation.z)
         console.log(scene.getObjectByName('head').rotation.z)

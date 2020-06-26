@@ -13,19 +13,65 @@ function findScreenCoords(mouseEvent){
     var ypos;
     if (mouseEvent){
       //FireFox
-      xpos = mouseEvent.screenX;
-      ypos = mouseEvent.screenY;
+      xpos = mouseEvent.clientX;
+      ypos = mouseEvent.clientY;
     }
     else{
       //IE
-      xpos = window.event.screenX;
-      ypos = window.event.screenY;
+      xpos = window.event.clientX;
+      ypos = window.event.clientY;
     }
-    document.getElementById("screenCoords").innerHTML = xpos + ", " + ypos;
     screenX = -processCoords(xpos/(window.innerWidth/2)).toFixed(2);
-    screenY = processCoords(ypos/(window.outerHeight/2)).toFixed(2);
-    document.getElementById("screenPercent").innerHTML = screenX + ", " + screenY;
+    screenY = processCoords(ypos/(window.innerHeight/2)).toFixed(2);
+    
 
+    if ('DeviceOrientationEvent' in window) {
+        window.addEventListener('deviceorientation', deviceOrientationHandler, false);
+      } else {
+        document.getElementById('logoContainer').innerText = 'Device Orientation API not supported.';
+      }
+      
+      function deviceOrientationHandler (eventData) {
+        var gamma = eventData.gamma;
+        var beta = eventData.beta;
+        var alpha = eventData.alpha;
+
+        
+        if ( gamma != null & Math.abs(gamma)<45){
+            document.getElementById("alpha").innerHTML = alpha.toFixed(2)//+"-"+beta.toFixed(2)+"-"+gamma.toFixed(2)
+            //portrait
+            document.getElementById("screenPercent").innerHTML = "portrait"
+            //if((alpha>-90 && alpha<90) && (beta>0 && beta<180)){
+                screenY = -processCoords((Math.abs(90+alpha)/4)/22.5).toFixed(2);
+                //screenY = -processCoords((beta/4)/22.5).toFixed(2);
+            //}
+            
+            
+            
+            
+
+        }
+        else if (gamma != null & gamma>=45){
+            //landscape-r
+            document.getElementById("screenPercent").innerHTML = "landscape-r";
+            if((alpha>-90 && alpha<90) && (beta>0 && beta<180)){
+                screenY = -processCoords((Math.abs(90+alpha)/4)/22.5).toFixed(2);
+                screenX = -processCoords((beta/4)/22.5).toFixed(2);
+            }
+            
+        }
+        else if (gamma != null & gamma<=-45){
+            document.getElementById("screenPercent").innerHTML = "landscape-l";
+            if((alpha>-90 && alpha<90) && (beta>0 && beta<180)){
+                screenY = -processCoords((Math.abs(90+alpha)/4)/22.5).toFixed(2);
+                screenX = -processCoords((beta/4)/22.5).toFixed(2);
+            }
+            
+        }
+        moveHead()
+        document.getElementById("screenCoords").innerHTML = screenX + ", " + screenY;
+        
+      }
     moveHead()
 }
 
@@ -45,8 +91,8 @@ function moveHead(){
 
         //Light Motion
         var light = scene.getObjectByName('pointLight');
-        light.position.y = 10*screenX;
-        light.position.x = 10*screenY;
+        light.position.y = 2*screenX;
+        light.position.x = 2*screenY;
     }
 }
 function lookAt(scn){
