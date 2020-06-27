@@ -13,6 +13,8 @@ var renderer;
 var controls;
 var loader;
 
+var headMaterial
+
 function getLights(){
     light = new THREE.PointLight(0x131c25,5,10,0);
     light.position.z = 4;
@@ -43,7 +45,6 @@ function getRenderer(){
 
 function loadModel(){
     loader = new GLTFLoader();
-
     var headMaterial = new THREE.MeshPhongMaterial({
         color: 0x2a3c4f,
         wireframe: true,
@@ -75,15 +76,15 @@ var trueonce = true;
 function update(){
     //controls.update();
     if (!(scene.getObjectByName('jaw') == undefined)){
-        console.log(scene.getObjectByName('jaw').rotation.z)
-        console.log(scene.getObjectByName('head').rotation.z)
+        //console.log(scene.getObjectByName('jaw').rotation.z)
+        //console.log(scene.getObjectByName('head').rotation.z)
         if(scene.getObjectByName('Sam') != undefined && trueonce){
             //folder.add(scene.getObjectByName('jaw').position,'y',0,1.8);
             //folder.add(scene.getObjectByName('mouthL').position,'x',0.5,1.5);
             //folder.add(scene.getObjectByName('mouthR').position,'x',0.5,1.5);
 
-            folder.add(scene.getObjectByName('head').rotation,'z',-1,2);
-            folder.add(scene.getObjectByName('jaw').rotation,'z',0,2);
+            //folder.add(scene.getObjectByName('head').rotation,'z',-1,2);
+            //folder.add(scene.getObjectByName('jaw').rotation,'z',0,2);
 
             trueonce =false;
         }
@@ -99,30 +100,51 @@ function update(){
     requestAnimationFrame(update);
 }
 var folder;
-function init(){
-    getLights();
-    getCamera();
-    getRenderer();
-    loadModel();
-    document.getElementById('webgl').appendChild(renderer.domElement);
-    lookAt(scene);
 
-    const datGui  = new dat.GUI({ autoPlace: true });
-    folder = datGui.addFolder(`Cube`);
-    folder.add(light.position,'x',-10,10);
-    folder.add(light.position,'y',-10,10);
-    folder.add(light.position,'z',-10,10);
-    folder.add(light,'intensity',0.1,10);
+var initial = true;
+function init(mode){
+    console.log(mode)
+    
+    if(initial){
+        getLights();
+        getCamera();
+        getRenderer();
+        loadModel();
+        
+        var canvas = document.getElementById('root').appendChild(renderer.domElement);
+        canvas.id = "canvas";
+        console.log(canvas)
+        lookAt(scene);
+        update();
+        initial = false
+    }
+    if(mode==1){
+        renderer.setClearColor('rgb(19,28,36)');
+    }
+    else if(mode==2){
+        renderer.setClearColor('rgb(255, 255, 255)');
+    }
+    
+
+    //const datGui  = new dat.GUI({ autoPlace: true });
+    //folder = datGui.addFolder(`Cube`);
+    //folder.add(light.position,'x',-10,10);
+    //folder.add(light.position,'y',-10,10);
+    //folder.add(light.position,'z',-10,10);
+    //folder.add(light,'intensity',0.1,10);
 
     //folder.add(camera.position,'x',-5,5);
     //folder.add(camera.position,'y',-10,10);
     //folder.add(camera.position,'z',-10,10);
-    update();
+    
 }
+
+
 const Head = (props) => {
+    
     return(
-        <div>
-            {init()}
+        <div >
+            {init(props.mode)}
         </div>
     )
 }

@@ -1,22 +1,178 @@
-#screenCoords{
-  position: fixed;
-  color: #61dafb;
+#root{
+  overflow-x: hidden;
+  background-color: #131c25;
+  color:#d9efff;
 }
-#screenPercent{
+#root.light{
+  background-color: #ffffff;
+  color:#1e335a;
+}
+#menu{
   position: fixed;
-  padding: 20px;
-  color: #61dafb;
+  background-color: #0f151c;
+  min-height: 7%;
+  width: 100%;
+  top: 0px;
+}
+#menu.light{
+  background-color: #ededed;
+}
+#btn-container{
+  min-width: 70%;
+  max-width: 90%;
+  padding: 10px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-content: space-around;
 }
 
-#webgl{
+.btn{
+  min-width: 20%;
+  overflow: hidden;
+  background-color: #131a24;
+  color: #8ea7d1;
+  outline: none;
+  border-width: 0px;
+  border-color: #8ea7d1;
+  border-radius: 25px;
+  padding: 10px;
+  margin: auto;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'Roboto';
+}
+.btn.light{
+  background-color: white;
+  color: black;
+  border-color: black;
+}
+.btn:hover{
+  animation: buttonhover 0.5s both ease-in;
+  color: #131a24;
+  box-shadow: 5px 5px 5x black;
+}
+
+.btn.light:hover{
+  animation: buttonhoverlight 0.5s both ease-in;
+  color: white;
+  box-shadow: 5px 5px 5x black;
+}
+@keyframes buttonhover {
+  from {background-color: #131a24;}
+  to {background-color: #68778f;}
+}
+@keyframes buttonhoverlight {
+  from {background-color: white;}
+  to {background-color: #585858;}
+}
+#canvas{
+  position: relative;
   overflow: hidden;
 }
-#alpha{
-  position: fixed;
-  color: red;
-  bottom: 0px;
+#content{
+  text-align: center;
 }
 
+#link{
+  color:white;
+  font-size: small;
+}
+#link.light{
+  color:black;
+  font-size: small;
+}
+#intro-container{
+  width: 100%;
+  position: absolute;
+  top: 400px;
+}
+#intro{
+  margin: auto;
+  width: max-content;
+  max-width: 95%;
+  text-align: center;
+  font-family: 'Roboto';
+}
+#social{
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  background-color: #3c6591;
+  opacity: 0.4;
+  border-radius: 12px;
+  overflow: hidden;
+  justify-content: space-evenly;
+}
+
+#social.light{
+  background-color: #636363;
+}
+
+#social:hover{
+  animation: opacity-grow 0.2s both;
+}
+
+@keyframes opacity-grow{
+  from{opacity: 0.4;}
+  to{opacity: 0.9;}
+}
+.social-icon{
+  min-width: 30px;
+  min-height: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
+
+.social-icon:hover{
+  animation: icon-grow 0.2s both ;
+}
+
+@keyframes icon-grow{
+  from{
+    min-width: 30px;
+    min-height: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  to{
+    min-width: 40px;
+    min-height: 40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
+#linkedin-image{
+  background-image: url('./images/linkedin-l.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+
+#github-image{
+  background-image: url('./images/github-l.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+
+#instagram-image{
+  background-image: url('./images/instagram-l.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#facebook-image{
+  background-image: url('./images/facebook-l.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
 
 /* width */
 ::-webkit-scrollbar {
@@ -39,6 +195,8 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #405b78; 
 }
+
+
 .App {
   text-align: center;
 }
@@ -75,4 +233,117 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* The switch - the box around the slider */
+
+#switch-container{
+  position: absolute;
+  bottom: 0px;
+  padding: 10px;
+  margin: auto;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+
+  
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #425063;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-image: url('images/sun.png');
+  background-position: center;
+  background-size: 20px;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+input:checked + .slider {
+  background-color: #ccc;
+}
+input:checked + .slider:before {
+  border-width: 0px;
+  background-image: url('images/moon.png');
+  background-size: 20px;
+  background-position: center;
+}
+
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+.slider{
+  border-radius: 34px;
+}
+
+.slider:before {
+  border-radius: 34px;
+}
+
+/*typrwriter*/
+.typewriter h1 {
+  font-weight: bolder;
+  font-size: 5vmin;
+  opacity: 0.9;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid #3c6591; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+.typewriter h3 {
+  font-weight: lighter;
+  font-size: 3vmin;
+  animation: fade-in 0.5s both ease-in;
+  animation-delay: 3.5s;
+}
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #3c6591; }
+}
+
+@keyframes fade-in{
+  from {opacity: 0;}
+  to {opacity: 0.8;}
 }

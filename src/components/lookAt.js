@@ -4,6 +4,9 @@ var screenX;
 var screenY;
 var scene;
 
+var trueonce = true;
+var baseGamma;
+var baseBeta;
 function processCoords(coord){
     if (1-coord<0) return -Math.pow((1-coord),2);
     return Math.pow((1-coord),2);
@@ -28,7 +31,7 @@ function findScreenCoords(mouseEvent){
     if ('DeviceOrientationEvent' in window) {
         window.addEventListener('deviceorientation', deviceOrientationHandler, false);
       } else {
-        document.getElementById('logoContainer').innerText = 'Device Orientation API not supported.';
+        alert('Device Orientation API not supported.');
       }
       
       function deviceOrientationHandler (eventData) {
@@ -36,41 +39,22 @@ function findScreenCoords(mouseEvent){
         var beta = eventData.beta;
         var alpha = eventData.alpha;
 
+        if(trueonce && alpha !=0){
+            baseGamma = gamma;
+            baseBeta = beta;
+            trueonce = false;
+        }
         
         if ( gamma != null & Math.abs(gamma)<45){
-            document.getElementById("alpha").innerHTML = alpha.toFixed(2)//+"-"+beta.toFixed(2)+"-"+gamma.toFixed(2)
             //portrait
-            document.getElementById("screenPercent").innerHTML = "portrait"
-            //if((alpha>-90 && alpha<90) && (beta>0 && beta<180)){
-                screenY = -processCoords((Math.abs(90+alpha)/4)/22.5).toFixed(2);
-                //screenY = -processCoords((beta/4)/22.5).toFixed(2);
-            //}
-            
-            
-            
-            
-
-        }
-        else if (gamma != null & gamma>=45){
-            //landscape-r
-            document.getElementById("screenPercent").innerHTML = "landscape-r";
-            if((alpha>-90 && alpha<90) && (beta>0 && beta<180)){
-                screenY = -processCoords((Math.abs(90+alpha)/4)/22.5).toFixed(2);
-                screenX = -processCoords((beta/4)/22.5).toFixed(2);
+            if(alpha !=0 && (gamma>baseGamma-90 && gamma<baseGamma+90)){
+                if (Math.abs((baseGamma-gamma)/90).toFixed(2)<1)
+                screenX = ((baseGamma-gamma)/90).toFixed(2)
+                if(Math.abs((baseBeta-beta)/90).toFixed(2)<1)
+                screenY = -((baseBeta-beta)/90).toFixed(2)
             }
-            
-        }
-        else if (gamma != null & gamma<=-45){
-            document.getElementById("screenPercent").innerHTML = "landscape-l";
-            if((alpha>-90 && alpha<90) && (beta>0 && beta<180)){
-                screenY = -processCoords((Math.abs(90+alpha)/4)/22.5).toFixed(2);
-                screenX = -processCoords((beta/4)/22.5).toFixed(2);
-            }
-            
         }
         moveHead()
-        document.getElementById("screenCoords").innerHTML = screenX + ", " + screenY;
-        
       }
     moveHead()
 }
