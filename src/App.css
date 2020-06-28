@@ -1,3 +1,6 @@
+body{
+  background-color: #131c25;
+}
 #root{
   overflow-x: hidden;
   background-color: #131c25;
@@ -85,7 +88,7 @@
 #intro-container{
   width: 100%;
   position: absolute;
-  top: 400px;
+
 }
 #intro{
   margin: auto;

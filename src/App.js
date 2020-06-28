@@ -4,6 +4,11 @@ import './App.css';
 import Head from './components/Head'
 
 function App() {
+  
+  window.onload = function() {
+    document.getElementById("intro-container").style.top = document.getElementById("canvas").style.height.replace("px","")/1.6 + "px";
+  };
+
   const [mode,setMode] = useState(1); //dark mode
   
   function handleClick(cb) {
@@ -26,11 +31,33 @@ function App() {
     document.getElementById('link').classList.toggle("light");
     document.getElementById('social').classList.toggle("light");
 
+    if(mode == 2) document.body.style.backgroundColor = "#131c25"
+    else if(mode == 1) document.body.style.backgroundColor = "#ffffff"
   }
 
   function handleColorChange(ev){
-    console.log(ev)
+    console.log(ev.target.id)
+    if(ev.target.id === "linkedin-image")
+      document.getElementById("social").style.backgroundImage = 'linear-gradient(90deg, #283e4b, #283e4b)';
+    else if(ev.target.id === "github-image")
+      document.getElementById("social").style.backgroundImage = 'linear-gradient(90deg, #882792, #462574)';
+    else if(ev.target.id === "instagram-image")
+      document.getElementById("social").style.backgroundImage = 'linear-gradient(90deg, #bc0097, #e7b53e)';
+    else if(ev.target.id === "facebook-image")
+      document.getElementById("social").style.backgroundImage = 'linear-gradient(90deg, #16a4fa, #0262e2)';
   }
+
+  function handleReset(ev){
+    
+    if(mode == 1){
+      console.log("resetting"+mode)
+      document.getElementById("social").style.backgroundImage = 'linear-gradient(90deg, #3c6591, #3c6591)';
+    }else if (mode == 2){
+      console.log("resetting"+mode)
+      document.getElementById("social").style.backgroundImage = 'linear-gradient(90deg, #636363, #636363)';
+    }
+  }
+
   return (
     <div>
       <div id="menu">
@@ -67,19 +94,19 @@ function App() {
           </h3>
           <div id="social">
             <a id="linkedin" target="_blank" href="https://www.linkedin.com/in/tejusrevi/">
-              <div id="linkedin-image" className="social-icon" onMouseOver={handleColorChange.bind(this)}/>
+              <div id="linkedin-image" className="social-icon" onMouseOver={handleColorChange.bind(this)} onMouseOut={handleReset.bind(this)}/>
             </a>
 
             <a id="github" target="_blank" href="https://github.com/tejusrevi">
-              <div id="github-image" className="social-icon"/>
+              <div id="github-image" className="social-icon" onMouseOver={handleColorChange.bind(this)} onMouseOut={handleReset.bind(this)}/>
             </a>
 
             <a id="instagram" target="_blank" href="https://www.instagram.com/tejx.r/">
-              <div id="instagram-image" className="social-icon"/> 
+              <div id="instagram-image" className="social-icon" onMouseOver={handleColorChange.bind(this)} onMouseOut={handleReset.bind(this)}/> 
             </a>
 
             <a id="facebook" target="_blank" href="https://www.facebook.com/Tejus.Revi/">
-              <div id="facebook-image" className="social-icon"/>
+              <div id="facebook-image" className="social-icon" onMouseOver={handleColorChange.bind(this)} onMouseOut={handleReset.bind(this)}/>
             </a>
             
           </div>
@@ -90,6 +117,7 @@ function App() {
       </div>
     </div>
   );
+  
 }
 
 export default App;
