@@ -1,14 +1,25 @@
 import React,{useState} from 'react';
+import ReactDOM from 'react-dom'
 import logo from './logo.svg';
 import './App.css';
 import Head from './components/Head'
+import {projects} from './components/projects';
+var intro;
+
+const projectsBar = projects;
 
 function App() {
   
   window.onload = function() {
+    if(document.getElementById("intro-container") == null) return;
     document.getElementById("intro-container").style.top = document.getElementById("canvas").style.height.replace("px","")/1.6 + "px";
+    intro = document.getElementById("intro")
   };
 
+  window.onresize = function() {
+    document.getElementById("intro-container").style.top = document.getElementById("canvas").style.height.replace("px","")/1.6 + "px";
+  };
+  
   const [mode,setMode] = useState(1); //dark mode
   
   function handleClick(cb) {
@@ -29,14 +40,34 @@ function App() {
 
     document.getElementById('root').classList.toggle("light");
     document.getElementById('link').classList.toggle("light");
-    document.getElementById('social').classList.toggle("light");
+    document.getElementById('threejs').classList.toggle("light");
+    if(document.getElementById('social') != null)
+      document.getElementById('social').classList.toggle("light");
 
     if(mode == 2) document.body.style.backgroundColor = "#131c25"
     else if(mode == 1) document.body.style.backgroundColor = "#ffffff"
+
+    if(document.getElementById('project-bar') != null)
+      document.getElementById('project-bar').classList.toggle("light");
+    
+    var card = document.getElementsByClassName('card');
+    for (var i = 0; i < card.length; i++) 
+    {
+      card[i].classList.toggle("light");
+    }
+
+    var projectLink = document.getElementsByClassName('project-link');
+    for (var i = 0; i < projectLink.length; i++) 
+    {
+      projectLink[i].classList.toggle("light");
+    }
+    
+    if(document.getElementById('project-link') != null)
+      document.getElementById('project-link').classList.toggle("light");
   }
 
   function handleColorChange(ev){
-    console.log(ev.target.id)
+    if(document.getElementById('social') == null) return;
     if(ev.target.id === "linkedin-image")
       document.getElementById("social").style.backgroundImage = 'linear-gradient(90deg, #283e4b, #283e4b)';
     else if(ev.target.id === "github-image")
@@ -58,17 +89,35 @@ function App() {
     }
   }
 
+  function handleProjectClick(e){
+    document.getElementById("mid").innerHTML = "";
+    if (document.getElementById("project-bar") == null) {
+      ReactDOM.render(projects,document.getElementById('mid'))
+    }
+    else {
+      ReactDOM.unmountComponentAtNode(document.getElementById('mid'));
+    }
+  }
+
+  function handleArtworkClick(e){
+    alert("coming soon")
+  }
+
+  function handleContactClick(e){
+    window.open('mailto:tejusrevi@gmail.com');
+  }
+
   return (
     <div>
       <div id="menu">
         <div id="btn-container">
-        <button className="btn" id="projects">
+        <button className="btn" id="projects" onClick={handleProjectClick.bind(this)}>
           PROJECTS
         </button>
-        <button className="btn"id="projects">
-          ARTWORK
+        <button className="btn" id="artworks" onClick={handleArtworkClick.bind(this)}>
+          ARTWORKS
         </button>
-        <button className="btn"id="projects">
+        <button className="btn"id="contact" onClick={handleContactClick.bind(this)}>
           CONTACT
         </button>
         </div>
@@ -111,9 +160,12 @@ function App() {
             
           </div>
         </div>
-        
         </div>
-        <a id="link" target="_blank" href="https://github.com/tejusrevi/InteractiveHumanFace">View this website on my Github ♥</a>
+        <div id="mid">jkhkjhkjh</div>
+
+        <div id="threejs" class="fadeforever">Made using ThreeJS</div>
+        <a id="link" class="fadeforever" target="_blank" href="https://github.com/tejusrevi/InteractiveHumanFace">View this website on my Github ♥</a>
+        
       </div>
     </div>
   );
