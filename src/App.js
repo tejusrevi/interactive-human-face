@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import Head from './components/Head'
 import {projects} from './components/projects';
+import {artworks} from './components/artworks';
 var intro;
 
 const projectsBar = projects;
@@ -49,6 +50,8 @@ function App() {
 
     if(document.getElementById('project-bar') != null)
       document.getElementById('project-bar').classList.toggle("light");
+    if(document.getElementById('artwork-bar') != null)
+      document.getElementById('artwork-bar').classList.toggle("light");
     
     var card = document.getElementsByClassName('card');
     for (var i = 0; i < card.length; i++) 
@@ -64,6 +67,7 @@ function App() {
     
     if(document.getElementById('project-link') != null)
       document.getElementById('project-link').classList.toggle("light");
+    
   }
 
   function handleColorChange(ev){
@@ -90,9 +94,11 @@ function App() {
   }
 
   function handleProjectClick(e){
-    document.getElementById("mid").innerHTML = "";
     if (document.getElementById("project-bar") == null) {
       ReactDOM.render(projects,document.getElementById('mid'))
+      if (document.getElementById("project-bar") == null) return;
+      if (mode == 2) document.getElementById("project-bar").classList.add('light');
+      document.getElementById("project-bar").scrollIntoView();
     }
     else {
       ReactDOM.unmountComponentAtNode(document.getElementById('mid'));
@@ -100,7 +106,15 @@ function App() {
   }
 
   function handleArtworkClick(e){
-    alert("coming soon")
+    if (document.getElementById("artwork-bar") == null) {
+      ReactDOM.render(artworks,document.getElementById('mid'))
+      if (document.getElementById("artwork-bar") == null) return;
+      if (mode == 2) document.getElementById("artwork-bar").classList.add('light');
+      document.getElementById("artwork-bar").scrollIntoView();
+    }
+    else {
+      ReactDOM.unmountComponentAtNode(document.getElementById('mid'));
+    }
   }
 
   function handleContactClick(e){
@@ -161,7 +175,7 @@ function App() {
           </div>
         </div>
         </div>
-        <div id="mid">jkhkjhkjh</div>
+        <div id="mid"></div>
 
         <div id="threejs" class="fadeforever">Made using ThreeJS</div>
         <a id="link" class="fadeforever" target="_blank" href="https://github.com/tejusrevi/InteractiveHumanFace">View this website on my Github ♥</a>

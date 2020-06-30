@@ -12,6 +12,7 @@ body{
   color:#1e335a;
 }
 #menu{
+  z-index: 5;
   position: fixed;
   background-color: #0f151c;
   min-height: 7%;
@@ -216,7 +217,7 @@ body{
   background-color: #2d3d55;
   width: 80%;
   height: 100%;
-
+  border-radius: 12px;
   padding: 10px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -253,14 +254,14 @@ body{
 }
 .card{
   margin: auto;
-  width: 200px;
+  width: 185px;
   min-width: 160px;
 
   min-height: 90px;
   height: 112.5px;
   padding: 10px;
   background-color: #1e2733;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
 }
 
@@ -283,6 +284,44 @@ body{
   width: 160;
   margin: auto;
 }
+
+.card-image.art{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 12px;
+  min-height: 100%;
+  width: 100%;
+}
+
+#artwork-bar{
+  animation: fade-in 0.2s both ease-in;
+  margin: auto;
+  opacity: 0.8;
+  background-color: #2d3d55;
+  width: 80%;
+  height: 100%;
+  border-radius: 12px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-gap: 1rem;
+}
+
+#artwork-bar.light{
+  background-color: #ededed;
+}
+
+#pursuit{
+  background-image: url(./images/art-thumbnails/pursuit.jpg);
+}
+#joker{
+  background-image: url(./images/art-thumbnails/joker.jpg);
+}
+#ironman{
+  background-image: url(./images/art-thumbnails/ironman.jpg);
+}
+
 
 /* width */
 ::-webkit-scrollbar {
