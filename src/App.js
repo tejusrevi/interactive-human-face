@@ -129,7 +129,7 @@ function App() {
           PROJECTS
         </button>
         <button className="btn" id="artworks" onClick={handleArtworkClick.bind(this)}>
-          ARTWORKS
+          DRAWING BOOK
         </button>
         <button className="btn"id="contact" onClick={handleContactClick.bind(this)}>
           CONTACT

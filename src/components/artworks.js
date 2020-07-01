@@ -1,30 +1,46 @@
 import React from 'react';
 
+var images = ["harry","wonder","alexandra","emilia","lion","ironman","adele","katy","pursuit","joker"];
+var index = -1;
+function handleExtremes(){
+    if (index<0) {
+        document.getElementsByClassName("card-image")[0].id = "page";
+        document.getElementById("previous").disabled = true;
+    }
+    else if (index > images.length-2 || index < 0) {
+        document.getElementById("next").disabled = true;
+    }else{
+        document.getElementById("next").disabled = false;
+        document.getElementById("previous").disabled = false;
+    }
+}
+function handleNext(){
+    document.getElementsByClassName("card-image")[0].id = images[++index];
+    handleExtremes();
+    console.log(index)
+}
+
+function handlePrevious(){
+    console.log(index)
+    
+    document.getElementsByClassName("card-image")[0].id = images[--index]
+    handleExtremes();
+    
+}
 const artworks =
         <div id="artwork-bar">
-            <div className="card">
-                <a className="art-link" href="http://tejusrevi.000webhostapp.com/octranspo-app">
-                <div className="card-image art" id="pursuit">
+            <button className="page-move" id="previous" onClick={handlePrevious.bind(this)}>
+
+            </button>
+            <div className="card art">
+            <div className="card-image art" id="page">
                 </div>
-                </a>
+                
             </div>
 
-            <div className="card">
-                <a className="art-link" href="https://star-wars-title.web.app/">
-                <div className="card-image art" id="joker">
-                </div>
-                </a>
-            </div>
+            <button className="page-move" id="next" onClick={handleNext.bind(this)}>
 
-
-            <div className="card">
-                <a className="art-link" href="https://codepen.io/tejusrevi/pen/jOWNVKP">
-                <div className="card-image art" id="ironman">
-                </div>
-                </a>
-            </div>
-
-
+            </button>
         </div>
     
 
