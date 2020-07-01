@@ -27,13 +27,7 @@ const projects =
                 </a>
             </div>
 
-            <div className="card">
-                <a className="project-link" href="https://codepen.io/tejusrevi/pen/jOWNVKP">
-                <div className="card-image" id="drum-pad">
-                </div>
-                Drum Pad
-                </a>
-            </div>
+
 
 
         </div>

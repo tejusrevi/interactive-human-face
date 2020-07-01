@@ -1,7 +1,6 @@
 import * as THREE from 'three';
 import React from 'react';
 import * as dat from 'dat.gui';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
 import {lookAt} from './lookAt'
 
@@ -75,10 +74,10 @@ var trueonce = true;
 
 function update(){
     //controls.update();
-    if (!(scene.getObjectByName('jaw') == undefined)){
+    if (!(scene.getObjectByName('jaw') === undefined)){
         //console.log(scene.getObjectByName('jaw').rotation.z)
         //console.log(scene.getObjectByName('head').rotation.z)
-        if(scene.getObjectByName('Sam') != undefined && trueonce){
+        if(scene.getObjectByName('Sam') !== undefined && trueonce){
             //folder.add(scene.getObjectByName('jaw').position,'y',0,1.8);
             //folder.add(scene.getObjectByName('mouthL').position,'x',0.5,1.5);
             //folder.add(scene.getObjectByName('mouthR').position,'x',0.5,1.5);
@@ -118,10 +117,10 @@ function init(mode){
         update();
         initial = false
     }
-    if(mode==1){
+    if(mode === 1){
         renderer.setClearColor('rgb(19,28,36)');
     }
-    else if(mode==2){
+    else if(mode === 2){
         renderer.setClearColor('rgb(255, 255, 255)');
     }
     

@@ -1,5 +1,4 @@
-import * as THREE from 'three';
-import {limits_transformation,limits_rotation} from './limits'
+import {limits_rotation} from './limits'
 var screenX;
 var screenY;
 var scene;
@@ -39,15 +38,15 @@ function findScreenCoords(mouseEvent){
         var beta = eventData.beta;
         var alpha = eventData.alpha;
 
-        if(trueonce && alpha !=0){
+        if(trueonce && alpha !== 0){
             baseGamma = gamma;
             baseBeta = beta;
             trueonce = false;
         }
         
-        if ( gamma != null & Math.abs(gamma)<45){
+        if ( gamma !== null & Math.abs(gamma)<45){
             //portrait
-            if(alpha !=0 && (gamma>baseGamma-90 && gamma<baseGamma+90)){
+            if(alpha !== 0 && (gamma>baseGamma-90 && gamma<baseGamma+90)){
                 if (Math.abs((baseGamma-gamma)/90).toFixed(2)<1)
                 screenX = ((baseGamma-gamma)/90).toFixed(2)
                 if(Math.abs((baseBeta-beta)/90).toFixed(2)<1)
@@ -60,7 +59,7 @@ function findScreenCoords(mouseEvent){
 }
 
 function moveHead(){
-    if(scene.getObjectByName('Sam') != undefined){
+    if(scene.getObjectByName('Sam') !== undefined){
         //Model motion
         var jaw = scene.getObjectByName('jaw');
         var head = scene.getObjectByName('head');

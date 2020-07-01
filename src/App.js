@@ -5,16 +5,12 @@ import './App.css';
 import Head from './components/Head'
 import {projects} from './components/projects';
 import {artworks} from './components/artworks';
-var intro;
-
-const projectsBar = projects;
 
 function App() {
   
   window.onload = function() {
-    if(document.getElementById("intro-container") == null) return;
+    if(document.getElementById("intro-container") === null) return;
     document.getElementById("intro-container").style.top = document.getElementById("canvas").style.height.replace("px","")/1.6 + "px";
-    intro = document.getElementById("intro")
   };
 
   window.onresize = function() {
@@ -45,8 +41,8 @@ function App() {
     if(document.getElementById('social') != null)
       document.getElementById('social').classList.toggle("light");
 
-    if(mode == 2) document.body.style.backgroundColor = "#131c25"
-    else if(mode == 1) document.body.style.backgroundColor = "#ffffff"
+    if(mode === 2) document.body.style.backgroundColor = "#131c25"
+    else if(mode === 1) document.body.style.backgroundColor = "#ffffff"
 
     if(document.getElementById('project-bar') != null)
       document.getElementById('project-bar').classList.toggle("light");
@@ -54,13 +50,13 @@ function App() {
       document.getElementById('artwork-bar').classList.toggle("light");
     
     var card = document.getElementsByClassName('card');
-    for (var i = 0; i < card.length; i++) 
+    for (i = 0; i < card.length; i++) 
     {
       card[i].classList.toggle("light");
     }
 
     var projectLink = document.getElementsByClassName('project-link');
-    for (var i = 0; i < projectLink.length; i++) 
+    for ( i = 0; i < projectLink.length; i++) 
     {
       projectLink[i].classList.toggle("light");
     }
@@ -71,7 +67,7 @@ function App() {
   }
 
   function handleColorChange(ev){
-    if(document.getElementById('social') == null) return;
+    if(document.getElementById('social') === null) return;
     if(ev.target.id === "linkedin-image")
       document.getElementById("social").style.backgroundImage = 'linear-gradient(90deg, #283e4b, #283e4b)';
     else if(ev.target.id === "github-image")
@@ -84,20 +80,31 @@ function App() {
 
   function handleReset(ev){
     
-    if(mode == 1){
+    if(mode === 1){
       console.log("resetting"+mode)
       document.getElementById("social").style.backgroundImage = 'linear-gradient(90deg, #3c6591, #3c6591)';
-    }else if (mode == 2){
+    }else if (mode === 2){
       console.log("resetting"+mode)
       document.getElementById("social").style.backgroundImage = 'linear-gradient(90deg, #636363, #636363)';
     }
   }
 
   function handleProjectClick(e){
-    if (document.getElementById("project-bar") == null) {
+    if (document.getElementById("project-bar") === null) {
       ReactDOM.render(projects,document.getElementById('mid'))
-      if (document.getElementById("project-bar") == null) return;
-      if (mode == 2) document.getElementById("project-bar").classList.add('light');
+      if (document.getElementById("project-bar") === null) return;
+      if (mode === 2) {
+        document.getElementById("project-bar").classList.add('light');
+        var card = document.getElementsByClassName("card");
+        for(var i=0;i<card.length;i++){
+          card[i].classList.add("light")
+        }
+        var projectLink = document.getElementsByClassName("project-link");
+        for(var i=0;i<projectLink.length;i++){
+          projectLink[i].classList.add("light")
+        }
+
+      }
       document.getElementById("project-bar").scrollIntoView();
     }
     else {
@@ -106,10 +113,13 @@ function App() {
   }
 
   function handleArtworkClick(e){
-    if (document.getElementById("artwork-bar") == null) {
+    if (document.getElementById("artwork-bar") === null) {
       ReactDOM.render(artworks,document.getElementById('mid'))
-      if (document.getElementById("artwork-bar") == null) return;
-      if (mode == 2) document.getElementById("artwork-bar").classList.add('light');
+      if (document.getElementById("artwork-bar") === null) return;
+      if (mode === 2) {
+        document.getElementById("artwork-bar").classList.add('light');
+
+      }
       document.getElementById("artwork-bar").scrollIntoView();
     }
     else {
@@ -155,6 +165,7 @@ function App() {
           <h3>
             I'm an Artist and a Programmer
           </h3>
+          
           <div id="social">
             <a id="linkedin" target="_blank" href="https://www.linkedin.com/in/tejusrevi/">
               <div id="linkedin-image" className="social-icon" onMouseOver={handleColorChange.bind(this)} onMouseOut={handleReset.bind(this)}/>
@@ -177,8 +188,8 @@ function App() {
         </div>
         <div id="mid"></div>
 
-        <div id="threejs" class="fadeforever">Made using ThreeJS</div>
-        <a id="link" class="fadeforever" target="_blank" href="https://github.com/tejusrevi/InteractiveHumanFace">View this website on my Github ♥</a>
+        <div id="threejs" className="fadeforever">Made using ThreeJS</div>
+        <a id="link" className="fadeforever" target="_blank" href="https://github.com/tejusrevi/InteractiveHumanFace">View this website on my Github ♥</a>
         
       </div>
     </div>
