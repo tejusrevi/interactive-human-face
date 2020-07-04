@@ -90,8 +90,8 @@ function App() {
   }
 
   function handleProjectClick(e){
-    if (document.getElementById("project-bar") === null) {
       ReactDOM.render(projects,document.getElementById('mid'))
+      document.getElementById("mid").scrollIntoView();
       if (document.getElementById("project-bar") === null) return;
       if (mode === 2) {
         document.getElementById("project-bar").classList.add('light');
@@ -106,26 +106,18 @@ function App() {
 
       }
       document.getElementById("project-bar").scrollIntoView();
-    }
-    else {
-      ReactDOM.unmountComponentAtNode(document.getElementById('mid'));
-    }
+    
   }
 
   function handleArtworkClick(e){
-    if (document.getElementById("artwork-bar") === null) {
-      ReactDOM.render(artworks,document.getElementById('mid'))
-      if (document.getElementById("artwork-bar") === null) return;
-      if (mode === 2) {
-        document.getElementById("artwork-bar").classList.add('light');
-
-      }
-      console.log("resizeing")
-      document.getElementById("artwork-bar").scrollIntoView();
+    ReactDOM.render(artworks,document.getElementById('mid'))
+    document.getElementById("mid").scrollIntoView();
+    if (document.getElementById("artwork-bar") === null) return;
+    if (mode === 2) {
+       document.getElementById("artwork-bar").classList.add('light');
     }
-    else {
-      ReactDOM.unmountComponentAtNode(document.getElementById('mid'));
-    }
+    
+    
   }
 
   function handleContactClick(e){
