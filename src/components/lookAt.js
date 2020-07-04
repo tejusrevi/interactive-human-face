@@ -26,7 +26,6 @@ function findScreenCoords(mouseEvent){
     screenX = -processCoords(xpos/(window.innerWidth/2)).toFixed(2);
     screenY = processCoords(ypos/(window.innerHeight/2)).toFixed(2);
     
-
     if ('DeviceOrientationEvent' in window) {
         window.addEventListener('deviceorientation', deviceOrientationHandler, false);
       } else {
@@ -53,9 +52,13 @@ function findScreenCoords(mouseEvent){
                 screenY = -((baseBeta-beta)/90).toFixed(2)
             }
         }
-        moveHead()
+        if(screenX<=1 && screenY<=1 && screenX>=-1 && screenY>=-1){
+          moveHead();
+        }
       }
-    moveHead()
+      if(screenX<=1 && screenY<=1 && screenX>=-1 && screenY>=-1){
+        moveHead();
+      }
 }
 
 function moveHead(){
@@ -81,7 +84,5 @@ function moveHead(){
 function lookAt(scn){
     scene = scn;
     document.onmousemove = findScreenCoords;
-    console.log(window.innerWidth/2)
-    console.log(window.outerHeight/2)
 }
 export {lookAt};

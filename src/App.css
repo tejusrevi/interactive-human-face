@@ -2,6 +2,7 @@ body{
   background-color: #131c25;
   overflow-x: hidden;
 }
+
 #root{
   overflow-x: hidden;
   background-color: #131c25;
@@ -13,7 +14,7 @@ body{
 }
 #menu{
   z-index: 5;
-  position: fixed;
+  position: absolute;
   background-color: #0f151c;
   min-height: 7%;
   width: 100%;
@@ -128,7 +129,6 @@ body{
   font-family: 'Roboto';
 }
 #social{
-  animation: fade-in 0.5s both ease-in;
   width: 80%;
   display: flex;
   flex-direction: row;
@@ -236,7 +236,7 @@ body{
   outline: none;
 }
 #oc-transpo{
-  background-image: url('./images/oc-transpo.png');
+  background-image: url('./images/oc-transpo.jpg');
 }
 #star-wars{
   background-image: url('./images/star-wars.png');
@@ -319,7 +319,7 @@ body{
   margin: auto;
   opacity: 1;
   background-color: #2d3d55;
-  width: 80%;
+  width: 97%;
   height: 100%;
   border-radius: 12px;
   padding-top: 10px;
@@ -353,57 +353,70 @@ body{
 }
 #page{
   background-image: url(./images/art/strathmore.jpg);
-  max-width: 47%;
+  max-width: 45%;
+  min-height: 50vw;
 }
 
 #next{
   background-image: url(./images/next.png);
+  max-width: 75%;
 }
 #previous{
   background-image: url(./images/previous.png);
+  max-width: 75%;
 }
 
 #pursuit{
   background-image: url(./images/art/pursuit.jpg);
+  max-width: 75%;
 }
 #joker{
   background-image: url(./images/art/joker.jpg);
+  max-width: 75%;
 }
 #adele{
   background-image: url(./images/art/adele.jpg);
+  max-width: 75%;
 }
 #katy{
   background-image: url(./images/art/katy.jpg);
+  max-width: 75%;
 }
 
 
 #alexandra{
   background-image: url(./images/art/alexandra.jpg);
-  max-width: 45%;
+  max-width: 50%;
+  min-height: 50vw;
 }
 
 
 #harry{
   background-image: url(./images/art/harry.jpg);
   max-width: 45%;
+  min-height: 50vw;
 }
 #ironman{
   background-image: url(./images/art/ironman.jpg);
-  max-width: 42%;
+  max-width: 44%;
+  min-height: 50vw;
 
 }
 #emilia{
   background-image: url(./images/art/emilia.jpg);
   max-width: 45%;
+  min-height: 50vw;
 
 }
 #lion{
   background-image: url(./images/art/lion.jpg);
   max-width: 45%;
+  min-height: 50vw;
 }
 #wonder{
   background-image: url(./images/art/wonder.jpg);
-  max-width: 47%;
+  max-width: 45%;
+  min-height: 50vw;
 
 }
 

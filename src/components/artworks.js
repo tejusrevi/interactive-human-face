@@ -12,6 +12,8 @@ var images = [  {id:"harry", footer:"Daniel Radcliffe - Harry Potter"},
                 {id:"joker" , footer:"Joaquin Pheonix - Joker"}];
 var index = -1;
 function handleExtremes(){
+    if (index != -1)
+        document.getElementById("book-footer").innerHTML = images[index].footer;
     if (index<0) {
         document.getElementsByClassName("card-image")[0].id = "page";
         document.getElementById("previous").disabled = true;
@@ -19,7 +21,6 @@ function handleExtremes(){
     else if (index > images.length-2 || index < 0) {
         document.getElementById("next").disabled = true;
     }else{
-        document.getElementById("book-footer").innerHTML = images[index].footer;
         document.getElementById("next").disabled = false;
         document.getElementById("previous").disabled = false;
     }
@@ -35,6 +36,7 @@ function handlePrevious(){
         document.getElementsByClassName("card-image")[0].id = "page";
         document.getElementById("previous").disabled = true;
         index = -1;
+        document.getElementById("book-footer").innerHTML = "Welcome to my Drawing Book"
         return;
     }
 

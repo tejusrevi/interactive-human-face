@@ -15,7 +15,7 @@
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Tejus Revi - Programmer</title>
+    <title>Tejus Revi</title>
   </head>
   <body>
     
@@ -24,5 +24,30 @@
       <div id="webgl">
       </div>
     </div>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCv7Ku3KpgtSlmR8Lrr09zAOW7ZIM3XOhU",
+        authDomain: "tejus-revi.firebaseapp.com",
+        databaseURL: "https://tejus-revi.firebaseio.com",
+        projectId: "tejus-revi",
+        storageBucket: "tejus-revi.appspot.com",
+        messagingSenderId: "109816789666",
+        appId: "1:109816789666:web:de8d8a49b52983d48e35fb",
+        measurementId: "G-3SCLETG78H"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+
   </body>
 </html>

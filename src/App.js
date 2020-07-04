@@ -120,6 +120,7 @@ function App() {
         document.getElementById("artwork-bar").classList.add('light');
 
       }
+      console.log("resizeing")
       document.getElementById("artwork-bar").scrollIntoView();
     }
     else {
