@@ -3,9 +3,6 @@ This React based web project features a humanoid face that follows cursor moveme
 
 This project features a humanoid head that follows cursor/gyroscopic movements. It uses Threejs library to dynamically deform a GLTF 3D mesh in response to user action. 
 
-* Branch Only-the-head, as the name implies, only has the associated threejs logics behind the 3D artifact and motion tracking.
-
-* Branch master is my [portfolio website](https://tejus-revi.web.app/) which uses this technology as a background.
 
 ![Demo](https://github.com/tejusrevi/interactive-human-face/blob/Only-the-head/src/images/ezgif.com-video-to-gif.gif)
 
