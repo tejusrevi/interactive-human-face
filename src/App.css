@@ -14,7 +14,7 @@ body{
 }
 #menu{
   z-index: 5;
-  position: absolute;
+  position: fixed;
   background-color: #0f151c;
   min-height: 7%;
   width: 100%;
@@ -127,6 +127,7 @@ body{
   max-width: 95%;
   text-align: center;
   font-family: 'Roboto';
+  opacity : 0.9;
 }
 #social{
   width: 80%;
@@ -214,7 +215,7 @@ body{
   animation: fade-in 0.2s both ease-in;
   margin: auto;
   opacity: 0.8;
-  background-color: #2d3d55;
+  background-color: #242f3f;
   width: 80%;
   height: 100%;
   border-radius: 12px;
@@ -244,6 +245,9 @@ body{
 #drum-pad{
   background-image: url('./images/drum-pad.png');
 }
+#mapogram{
+  background-image: url('./images/mapogram.png');
+}
 .card-image{
   background-size: cover;
   background-repeat: no-repeat;
@@ -254,7 +258,7 @@ body{
 }
 .card{
   margin: auto;
-  width: 185px;
+  width: 175px;
   min-width: 160px;
 
   min-height: 90px;
@@ -272,7 +276,7 @@ body{
   opacity: 0.5;
 }
 .project-link{
-  color: white;
+  color: #d9efff;
   font-style: 'Roboto';
   text-decoration: none;
 }

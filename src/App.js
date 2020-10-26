@@ -132,7 +132,7 @@ function App() {
           PROJECTS
         </button>
         <button className="btn" id="artworks" onClick={handleArtworkClick.bind(this)}>
-          DRAWING BOOK
+          SKETCH BOOK
         </button>
         <button className="btn"id="contact" onClick={handleContactClick.bind(this)}>
           CONTACT
@@ -153,10 +153,10 @@ function App() {
         <div id="intro-container">
         <div id="intro" className="typewriter">
           <h1>
-            Hello, My name is Tejus Revi
+            Hello, My name is Tejus Revi.
           </h1>
           <h3>
-            I'm an Artist and a Programmer
+            I'm a Software Developer.
           </h3>
           
           <div id="social">
@@ -181,7 +181,7 @@ function App() {
         </div>
         <div id="mid"></div>
 
-        <div id="threejs" className="fadeforever">Made using ThreeJS</div>
+        <div id="threejs" className="fadeforever">Handcrafted using ThreeJS & React</div>
         <a id="link" className="fadeforever" target="_blank" href="https://github.com/tejusrevi/InteractiveHumanFace">View this website on my Github ♥</a>
         
       </div>
