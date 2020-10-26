@@ -179,35 +179,10 @@ body{
     margin-bottom: 5px;
   }
 }
-#linkedin-image{
-  background-image: url('./images/linkedin-l.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
 
 
-#github-image{
-  background-image: url('./images/github-l.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
 
 
-#instagram-image{
-  background-image: url('./images/instagram-l.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-#facebook-image{
-  background-image: url('./images/facebook-l.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
 
 /* Projects */
 
@@ -236,18 +211,7 @@ body{
   border-width: 0px;
   outline: none;
 }
-#oc-transpo{
-  background-image: url('./images/oc-transpo.jpg');
-}
-#star-wars{
-  background-image: url('./images/star-wars.png');
-}
-#drum-pad{
-  background-image: url('./images/drum-pad.png');
-}
-#mapogram{
-  background-image: url('./images/mapogram.png');
-}
+
 .card-image{
   background-size: cover;
   background-repeat: no-repeat;
@@ -301,20 +265,6 @@ body{
   box-shadow: 0px 0px 30px #b8b8b8;
 }
 
-.card.art{
-  background-image: url(./images/paper.jpg);
-  border-radius: 0px;
-  padding-top: 2vw;
-  padding-bottom: 2vw;
-
-  padding-left: 4vw;
-  padding-right: 4vw;
-  height: 100%;
-  width: 100%;
-}
-
-
-
 .card.art:hover{
   opacity: 1;
 }
@@ -354,74 +304,6 @@ body{
   background-size: 33px;
   background-repeat: no-repeat;
   background-position: center;
-}
-#page{
-  background-image: url(./images/art/strathmore.jpg);
-  max-width: 45%;
-  min-height: 50vw;
-}
-
-#next{
-  background-image: url(./images/next.png);
-  max-width: 75%;
-}
-#previous{
-  background-image: url(./images/previous.png);
-  max-width: 75%;
-}
-
-#pursuit{
-  background-image: url(./images/art/pursuit.jpg);
-  max-width: 75%;
-}
-#joker{
-  background-image: url(./images/art/joker.jpg);
-  max-width: 75%;
-}
-#adele{
-  background-image: url(./images/art/adele.jpg);
-  max-width: 75%;
-}
-#katy{
-  background-image: url(./images/art/katy.jpg);
-  max-width: 75%;
-}
-
-
-#alexandra{
-  background-image: url(./images/art/alexandra.jpg);
-  max-width: 50%;
-  min-height: 50vw;
-}
-
-
-#harry{
-  background-image: url(./images/art/harry.jpg);
-  max-width: 45%;
-  min-height: 50vw;
-}
-#ironman{
-  background-image: url(./images/art/ironman.jpg);
-  max-width: 44%;
-  min-height: 50vw;
-
-}
-#emilia{
-  background-image: url(./images/art/emilia.jpg);
-  max-width: 45%;
-  min-height: 50vw;
-
-}
-#lion{
-  background-image: url(./images/art/lion.jpg);
-  max-width: 45%;
-  min-height: 50vw;
-}
-#wonder{
-  background-image: url(./images/art/wonder.jpg);
-  max-width: 45%;
-  min-height: 50vw;
-
 }
 
 
